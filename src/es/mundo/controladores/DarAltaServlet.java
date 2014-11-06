@@ -2,7 +2,6 @@ package es.mundo.controladores;
 
 import java.io.IOException;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -10,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import es.mundo.modelo.Negocio;
-import es.mundo.modelo.Pais;
 
 /**
  * Servlet implementation class DarAltaServlet
@@ -39,14 +37,6 @@ public class DarAltaServlet extends HttpServlet {
 	  	  // 3. Pasarle los datos recuperados al Negocio ......
 	      Negocio negocio = new Negocio();
 	      int id= negocio.darAlta(nombre, habitantes);
-	      //.. consultar elpais...
-	      Pais p=negocio.consultarUno(id);
-	      //meter el pais en el request... (setAttribute)
-	      request.setAttribute("pais",p);
-	      //redirigir a la vistaIndividual
-	      RequestDispatcher rd;
-	      rd= request.getRequestDispatcher("vistaIndividual.jsp");
-	      rd.forward(request, response);
 		}
 
 	/**
