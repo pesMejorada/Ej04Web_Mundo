@@ -14,7 +14,7 @@ import es.mundo.modelo.Pais;
 public class PaisDAO {
      private Connection cx;
    
-     public void conectar() {
+     private void conectar() {
        try {
             Class.forName("com.mysql.jdbc.Driver");
             cx= DriverManager.getConnection("jdbc:mysql://localhost:3306/MUNDO","root","root");
@@ -27,7 +27,7 @@ public class PaisDAO {
             e.printStackTrace();
         }
      }
-     public void desconectar() {
+     private void desconectar() {
          try {
             cx.close();
         } catch (SQLException e) {
