@@ -38,7 +38,8 @@ public class PaisDAO {
          
      }
        public int darAlta(Pais pais) {
-               try {
+              int idRetornar=0;
+            try {
                 
                 //1. conectar
                 conectar();
@@ -53,16 +54,19 @@ public class PaisDAO {
                 
                 //3. Ejecutar la consulta
                  int filasAfectadas =ps.executeUpdate();
-       
-                 //4.  hacer el commit....
+               
+                   //4.  hacer el commit....
                  cx.commit();
+                 if(filasAfectadas>=1) {
+                     idRetornar= ultimoId();    
+               }
                 //.5.cerrar la conexión
                  desconectar();
             } catch (SQLException e) {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
-         return 0;//OJO--->>>>>
+         return idRetornar;
     }
     public Pais consultarUno(int id) {
         Pais p = new Pais();
@@ -118,5 +122,34 @@ public class PaisDAO {
         
         return paises;
     }
-
+  
+    
+    public int  ultimoId() {
+        int  idM=90;
+        try {
+            //1. conectar
+            conectar();
+            //2. preparar la sentencia
+            PreparedStatement ps = cx.prepareStatement("SELECT MAX(ID) AS ULTIMO FROM PAIS");
+            //3. ejecutar la consulta
+            ResultSet consulta = ps.executeQuery();
+            //4. bajar el resultado de la consulta y ponerlo en el arrayList
+           if(consulta.next()) {
+                idM=consulta.getInt("ULTIMO");
+            }
+            //5. desconectar
+            desconectar();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+          
+      }
+     
+        return idM;
+    
+      
+      
+     
+     }
 }
+    
