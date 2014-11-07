@@ -30,5 +30,10 @@ public class Negocio {
       return paises;
     }
 
+    public ArrayList<Pais> consultarNombre(String nombre) {
+        ArrayList<Pais> paises=paisdao.consultarNombre(nombre);
+        return paises;
+    }
+
 
 }

@@ -151,5 +151,33 @@ public class PaisDAO {
       
      
      }
+    public ArrayList<Pais> consultarNombre(String nombre) {
+        ArrayList<Pais> paises= new ArrayList<Pais>();
+       try {
+            //1. conectar
+            conectar();
+            //2. preparar la sentencia
+            PreparedStatement ps = cx.prepareStatement("SELECT * FROM PAIS WHERE NOMBRE LIKE ?");
+            // 2.1 setear el interrogante
+            //ps.setString(1, "\"" +nombre + "%" + "\"" );
+            ps.setString(1, "%" +nombre+  "%");
+            //3. ejecutar la consulta
+            ResultSet consulta = ps.executeQuery();
+            //4. bajar el resultado de la consulta y ponerlo en el arrayList
+            while(consulta.next()) {
+                Pais p = new Pais();
+                p.setId(consulta.getInt("id"));
+                p.setNombre(consulta.getString("nombre"));
+                p.setHabitantes(consulta.getInt("habitantes"));
+                paises.add(p);
+            }
+            //5. desconectar
+            desconectar();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return paises;
+    }
 }
     
