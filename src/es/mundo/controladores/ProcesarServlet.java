@@ -33,12 +33,22 @@ public class ProcesarServlet extends HttpServlet {
 		     int id = Integer.parseInt(request.getParameter("id"));
 		     String nombre = request.getParameter("nombre");
 		     int habitantes=Integer.parseInt(request.getParameter("habitantes"));
+		     String borrar= request.getParameter("borrar");
+		     String actualizar=request.getParameter("actualizar");
 		     Negocio negocio = new Negocio();
 		     
-    		     //proceso borrar
-    		     String mensaje=  negocio.borrar(id);
+		     String h = ""; 
+		       //proceso borrar
+		    
+		     if(borrar!=null) {
+    		     h=  negocio.borrar(id);
+		      }
+		     if(actualizar!=null) {
+		        h=negocio.actualizar(id,nombre, habitantes);
+		     }
+		         
     		     //meter el mensaje en el request
-    		     request.setAttribute("mensaje",mensaje);
+    		     request.setAttribute("mensaje",h);
     		     // redirigir... a  la vista mensaje
     		     RequestDispatcher rd= request.getRequestDispatcher("vistaMensaje.jsp");
     		     rd.forward(request, response);

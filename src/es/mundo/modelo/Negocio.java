@@ -41,10 +41,24 @@ public class Negocio {
         //mandar un correo al administrador..
         int paisesBorrados= paisdao.borrar(id);
         if(paisesBorrados>=1) {
-            msg="Se han borrado" +paisesBorrados +" paises";
+            msg="Se han borrado " +paisesBorrados +" paises";
         }
         else {
               msg="No se ha podido borrar";
+        }
+       return msg;
+    }
+
+    public String actualizar(int id, String nombre, int habitantes) {
+        String msg;
+        // verificar si el pais tiene deudas pendiente
+        //mandar un correo al administrador..
+        int filas= paisdao.actualizar(id, nombre,habitantes);
+        if(filas>=1) {
+            msg="Se ha actualizado " +filas +" paises";
+        }
+        else {
+              msg="No se ha podido actualizar";
         }
        return msg;
     }

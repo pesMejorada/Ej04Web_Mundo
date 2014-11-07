@@ -201,5 +201,29 @@ public class PaisDAO {
          }
         return filasAfectadas;
     }
+    public int actualizar(int id, String nombre, int habitantes) {
+        int filasAfectadas=0;
+        try { 
+            //conectar
+              conectar();
+            //preparar la consulta..
+              PreparedStatement ps= cx.prepareStatement("UPDATE PAIS SET NOMBRE=?,HABITANTES=? WHERE ID=?");
+           // setear los ?                                                    UPDATE PAIS SET NOMBRE="ITALIA",HABITANTES=99 WHERE ID=4
+              ps.setString(1, nombre);
+              ps.setInt(2, habitantes);
+              ps.setInt(3, id);
+           // ejecutar la consulta
+              filasAfectadas= ps.executeUpdate();
+           // hacer el commit
+              cx.commit();
+          
+           //cerrar la conexion
+              desconectar();
+        } catch (SQLException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+       return filasAfectadas;
+    }
 }
     
