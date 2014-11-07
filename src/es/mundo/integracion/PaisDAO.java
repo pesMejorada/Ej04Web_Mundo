@@ -179,5 +179,27 @@ public class PaisDAO {
         }
         return paises;
     }
+    public int borrar(int id) {
+         int filasAfectadas=0;
+         try { 
+             //conectar
+               conectar();
+             //preparar la consulta..
+               PreparedStatement ps= cx.prepareStatement("DELETE FROM PAIS WHERE ID =?");
+            // setear los ?
+               ps.setInt(1, id);
+            // ejecutar la consulta
+               filasAfectadas= ps.executeUpdate();
+            // hacer el commit
+               cx.commit();
+           
+            //cerrar la conexion
+               desconectar();
+         } catch (SQLException e) {
+             // TODO Auto-generated catch block
+             e.printStackTrace();
+         }
+        return filasAfectadas;
+    }
 }
     

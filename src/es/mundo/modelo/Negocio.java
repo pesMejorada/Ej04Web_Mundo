@@ -35,5 +35,19 @@ public class Negocio {
         return paises;
     }
 
+    public String borrar(int id) {
+        String msg;
+        // verificar si el pais tiene deudas pendiente
+        //mandar un correo al administrador..
+        int paisesBorrados= paisdao.borrar(id);
+        if(paisesBorrados>=1) {
+            msg="Se han borrado" +paisesBorrados +" paises";
+        }
+        else {
+              msg="No se ha podido borrar";
+        }
+       return msg;
+    }
+
 
 }
