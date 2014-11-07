@@ -8,6 +8,7 @@
 <title>Vista Individual</title>
 </head>
 <body>
+<form action="Procesar" method="get">
 <% Pais pais = (Pais)request.getAttribute("pais"); %>
 <table>
     <tr>
@@ -16,10 +17,12 @@
       <th>Habitantes</th> 
     </tr>
    <tr>
-      <td><%=pais.getId() %></td>
-      <td><%=pais.getNombre() %></td>
-      <td><%=pais.getHabitantes() %></td>
+      <td><input type="text" name="id" value="<%=pais.getId() %>" readonly="readonly"/></td>
+      <td><input type="text" name="nombre" value="<%=pais.getNombre() %>"/></td>
+      <td><input type="text" name="habitantes" value="<%=pais.getHabitantes() %>"/></td>
   </tr>
 </table>
+ <input type="submit" value="Borrar" id="borrar"/>
+</form>
 </body>
 </html>
