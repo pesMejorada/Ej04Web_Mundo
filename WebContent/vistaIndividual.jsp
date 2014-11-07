@@ -25,5 +25,6 @@
  <input type="submit" value="Borrar" id="borrar" name="borrar"/>
  <input type="submit" value="Actualizar" id="actualizar" name="actualizar"/>
 </form>
+  <p><a href="index.html"  >Ir a Inicio</a></p>
 </body>
 </html>

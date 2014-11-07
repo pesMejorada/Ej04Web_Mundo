@@ -24,5 +24,6 @@
   </tr>
   <%}// del for %>
 </table>
+  <p><a href="index.html"  >Ir a Inicio</a></p>
 </body>
 </html>
