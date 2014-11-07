@@ -5,11 +5,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Respuesta</title>
+
+ <link rel="stylesheet" type="text/css" href="css/estilo.css"/>
+</head>
+<body>
+
 <% String mensaje= (String)request.getAttribute("mensaje"); %>
 <% if(mensaje==null)
          mensaje ="";%>
-</head>
-<body>
      <h3>Respuesta de la base de datos:</h3>
      <p><%=mensaje %></p>
      <p><a href="index.html"  >Ir a Inicio</a></p>

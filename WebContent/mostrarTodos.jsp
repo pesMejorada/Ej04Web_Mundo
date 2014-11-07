@@ -7,6 +7,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="css/estilo.css"/>
 </head>
 <body>
 <% ArrayList<Pais> paises = (ArrayList<Pais> )request.getAttribute("listado"); %>
